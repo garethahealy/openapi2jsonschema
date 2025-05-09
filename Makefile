@@ -23,3 +23,7 @@ pip-freeze:
 .PHONY: run
 run: pip-install
 	python openapi2jsonschema/command.py https://raw.githubusercontent.com/kubernetes/kubernetes/master/api/openapi-spec/swagger.json
+
+.PHONY: run-container
+run-container: docker-image
+	docker run yannh/openapi2jsonschema:latest https://raw.githubusercontent.com/kubernetes/kubernetes/master/api/openapi-spec/swagger.json
