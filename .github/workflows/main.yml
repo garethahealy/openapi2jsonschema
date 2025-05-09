@@ -12,3 +12,10 @@ jobs:
 
       - name: run
         run: make run-container
+
+      - name: publish
+        env:
+          GITHUB_USER: ${{ github.repository_owner }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO_ORG: ${{ github.repository_owner }}
+        run: make publish

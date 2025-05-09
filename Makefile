@@ -1,12 +1,15 @@
 #!/usr/bin/make -f
 
+REPO_ORG ?= yannh
+
 .PHONY: docker-image
 docker-image:
-	docker build -f Dockerfile -t yannh/openapi2jsonschema .
+	docker build -f Dockerfile -t $(REPO_ORG)/openapi2jsonschema .
 
 publish: docker-image
-	docker tag yannh/openapi2jsonschema docker.pkg.github.com/yannh/openapi2jsonschema/openapi2jsonschema:latest
-	docker push docker.pkg.github.com/yannh/openapi2jsonschema/openapi2jsonschema:latest
+	echo "$(GITHUB_TOKEN)" | docker login -u $(GITHUB_USER) --password-stdin ghcr.io
+	docker tag $(REPO_ORG)/openapi2jsonschema ghcr.io/$(REPO_ORG)/openapi2jsonschema:latest
+	docker push ghcr.io/$(REPO_ORG)/openapi2jsonschema:latest
 
 venv:
 	python3 -m venv venv/
@@ -26,4 +29,4 @@ run: pip-install
 
 .PHONY: run-container
 run-container: docker-image
-	docker run yannh/openapi2jsonschema:latest https://raw.githubusercontent.com/kubernetes/kubernetes/master/api/openapi-spec/swagger.json
+	docker run $(REPO_ORG)/openapi2jsonschema:latest https://raw.githubusercontent.com/kubernetes/kubernetes/master/api/openapi-spec/swagger.json
