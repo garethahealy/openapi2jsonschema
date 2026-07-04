@@ -22,6 +22,6 @@ repos:
     hooks:
       - id: gitleaks
   - repo: https://github.com/pylint-dev/pylint
-    rev: v2.17.2
+    rev: v4.0.6
     hooks:
       - id: pylint
