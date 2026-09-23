@@ -66,4 +66,3 @@ without the server. For that I have a bash script,
 
 The output from running this script can be seen in the accompanying
 [instrumenta/kubernetes-json-schema](https://github.com/instrumenta/kubernetes-json-schema).
-
