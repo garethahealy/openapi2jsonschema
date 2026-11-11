@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi9/python-312:9.8-1791407922@sha256:99daebea02c2ed4b4170bb43e393b01b20df21439bd74b4526f629df8f0751e6
+FROM registry.access.redhat.com/ubi9/python-312:9.9-1793872299@sha256:5b184c2acfe9e2eb9df1a243da8e4a82fedd96e5e7f6648ec5512656177fa326
 
 USER 0
 COPY ./openapi2jsonschema/ /src/openapi2jsonschema
